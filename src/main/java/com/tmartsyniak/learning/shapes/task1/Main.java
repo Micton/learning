@@ -9,20 +9,20 @@ public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         List<Figure> sourceFigures = new ArrayList<>();
-        FiguresIOUtil util = new FiguresIOUtil();
-        String file = "src/main/java/com/tmartsyniak/learning/shapes/task1/test.ser";
         for (int i = 1; i <= 5; i++) {
             sourceFigures.add(new Ring(i, i + 1));
             sourceFigures.add(new Circle(i + 2));
         }
+        FiguresIOUtil util = new FiguresIOUtil();
+        String file = "src/main/java/com/tmartsyniak/learning/shapes/task1/test.ser";
         util.writeFiguresToFile(sourceFigures, file);
-        List<Figure> readedFigures = new ArrayList<>();
+        List<Figure> readFigures = new ArrayList<>();
         for (Figure figure : util.readFiguresFromFile(file)) {
-            readedFigures.add(figure);
+            readFigures.add(figure);
             System.out.println(figure);
         }
         FiguresSearchUtil searchUtil = new FiguresSearchUtil();
-        System.out.println(searchUtil.getFigureWithMaximumBorderLength(readedFigures));
-        System.out.println(searchUtil.getFigureWithMaximumSquare(readedFigures));
+        System.out.println(searchUtil.getFigureWithMaximumBorderLength(readFigures));
+        System.out.println(searchUtil.getFigureWithMaximumSquare(readFigures));
     }
 }
