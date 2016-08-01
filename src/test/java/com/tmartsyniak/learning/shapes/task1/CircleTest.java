@@ -1,5 +1,6 @@
 package com.tmartsyniak.learning.shapes.task1;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,14 +8,22 @@ import static org.junit.Assert.assertNotNull;
 
 public class CircleTest {
 
-    private double radius = 5;
-    private Circle circle = new Circle(radius);
+    private double radius;
+    private Circle circle;
+    private double radiusWrong;
+    Circle circleWrong;
 
-    @Test (expected = IllegalArgumentException.class)
+    @Before
+    public void setUp() throws Exception {
+        radius = 5;
+        circle = new Circle(radius);
+        radiusWrong = -5;
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testConstructor() throws Exception {
         assertNotNull(circle);
-        double radiusWrong = -5;
-        Circle circleWrong = new Circle(radiusWrong);
+        circleWrong = new Circle(radiusWrong);
     }
 
     @Test

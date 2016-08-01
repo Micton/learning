@@ -1,5 +1,6 @@
 package com.tmartsyniak.learning.shapes.task1;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,12 +9,22 @@ import static org.junit.Assert.assertTrue;
 
 public class RingTest {
 
-    private double radiusInner = 3;
-    private double radiusOuter = 5;
-    private Circle outer = new Circle(radiusOuter);
-    private Circle inner = new Circle(radiusInner);
-    private Ring ring1 = new Ring(inner.getRadius(), outer.getRadius());
-    private Ring ring2 = new Ring(outer.getRadius(), inner.getRadius());
+    private double radiusInner;
+    private double radiusOuter;
+    private Circle outer;
+    private Circle inner;
+    private Ring ring1;
+    private Ring ring2;
+
+    @Before
+    public void setUp() throws Exception {
+        radiusInner = 3;
+        radiusOuter = 5;
+        outer = new Circle(radiusOuter);
+        inner = new Circle(radiusInner);
+        ring1 = new Ring(inner.getRadius(), outer.getRadius());
+        ring2 = new Ring(outer.getRadius(), inner.getRadius());
+    }
 
     @Test
     public void testConstructor() throws Exception {
