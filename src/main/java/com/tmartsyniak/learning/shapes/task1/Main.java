@@ -20,9 +20,12 @@ public class Main {
         for (Figure figure : util.readFiguresFromFile(file)) {
             readFigures.add(figure);
             System.out.println(figure);
+            System.out.println(figure.calcSquare());
+            System.out.println(figure.calcBorderLength());
         }
         FiguresSearchUtil searchUtil = new FiguresSearchUtil();
         System.out.println(searchUtil.getFigureWithMaximumBorderLength(readFigures));
         System.out.println(searchUtil.getFigureWithMaximumSquare(readFigures));
+
     }
 }
