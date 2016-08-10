@@ -8,14 +8,22 @@ public class Ring implements Figure {
     public Ring() {
     }
 
-    public Ring(int innerRadius, int outerRadius) {
+    public Ring(double innerRadius, double outerRadius) {
         if (innerRadius > outerRadius) {
-            int swap = innerRadius;
+            double swap = innerRadius;
             innerRadius = outerRadius;
             outerRadius = swap;
         }
         this.inner = new Circle(innerRadius);
         this.outer = new Circle(outerRadius);
+    }
+
+    public Circle getInner() {
+        return inner;
+    }
+
+    public Circle getOuter() {
+        return outer;
     }
 
     @Override
@@ -34,5 +42,24 @@ public class Ring implements Figure {
                 "inner=" + inner.getRadius() +
                 ", outer=" + outer.getRadius() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ring ring = (Ring) o;
+
+        if (inner != null ? !inner.equals(ring.inner) : ring.inner != null) return false;
+        return outer != null ? outer.equals(ring.outer) : ring.outer == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = inner != null ? inner.hashCode() : 0;
+        result = 31 * result + (outer != null ? outer.hashCode() : 0);
+        return result;
     }
 }
